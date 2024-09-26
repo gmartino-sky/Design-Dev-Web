@@ -1,0 +1,215 @@
+/* Estilo global */
+html {
+    scroll-padding-top: 80px; /* Ajusta este valor al alto de tu header */
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: #ffffff;
+    color: #121212;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 500; /* Asegura que el header esté por encima de otros elementos */
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+header::after {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #000000; /* Borde ajustado */
+    padding-bottom: 10px;
+}
+
+header img {
+    max-width: 20% !important; /* Reducir tamaño de la imagen */
+    height: auto !important;
+    margin: 0 auto; /* Centrar la imagen */
+    display: block;
+}
+
+
+/* Navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #121212;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Lora', serif; /* Fuente serif para los enlaces */
+}
+
+/* Secciones con compensación por el header */
+section {
+    padding-top: 200px; /* Espacio superior para que el contenido no quede oculto */
+    margin-top: -80px;  /* Compensa el desplazamiento */
+}
+
+/* Contenedor principal */
+#inicio {
+    padding-top: 0;
+    margin-inline: 10%;
+    border: 0;
+}
+
+/* Contenido del grid */
+.contenido {
+    display: grid;
+    grid-template-columns: 65% 35%; /* Proporciones ajustadas para principales y secundarias */
+    gap: 40px; /* Espaciado entre columnas */
+    padding: 20px;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contenido {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+        padding: 20px;
+    }
+}
+
+/* Noticias principales */
+.noticias-principales article {
+    margin-bottom: 30px;
+    margin-left: 10px;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 20px;
+}
+
+/* Noticias secundarias */
+.noticias-secundarias article {
+    margin-bottom: 30px;
+    text-align: left; /* Ajusta para alineación más natural */
+}
+
+.noticias-secundarias img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Imágenes principales */
+.noticias-principales img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    object-fit: cover; /* Ajusta las imágenes para que no se deformen */
+}
+
+/* Media query para pantallas más pequeñas (iPad) */
+@media (max-width: 810px) {
+    .contenido {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+        gap: 20px; /* Reduce el espaciado */
+    }
+
+    .noticias-principales img,
+    .noticias-secundarias img {
+        width: 100%; /* Ajusta el ancho para que las imágenes no se superpongan */
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header img {
+        max-width: 80%; /* Ajuste para pantallas muy pequeñas */
+    }
+
+    nav ul {
+        flex-direction: column; /* La navegación cambia a columna en pantallas pequeñas */
+        gap: 10px;
+    }
+}
+
+/* Estilo de los párrafos */
+.parrafo-noticias-principales {
+    margin-left: 10px;
+}
+
+/* Estilos para encabezados */
+h2, h3 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    font-size: 1rem;
+    color: #666;
+    margin-left: 10px;
+}
+
+
+
+/* Estilos del Footer*/
+
+#footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.footer-section {
+    text-align: center;
+    max-width: 300px;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li img {
+    width: 24px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+    vertical-align: middle; /* Alinea el icono con el texto */
+}
+
+.footer-section a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+  /* Fin de footer */
