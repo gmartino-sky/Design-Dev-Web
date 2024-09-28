@@ -10,6 +10,10 @@ desktop.ini
 # Archivos de sistema Linux
 *.swp
 
+# Archivos de sistema general
+*.zip
+*.rar
+
 # IDEs y editores
 ##################
 # Archivos de configuración de VSCode
