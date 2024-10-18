@@ -19,6 +19,7 @@ header {
     z-index: 500; /* Asegura que el header esté por encima de otros elementos */
     background-color: #ffffff;
     padding: 20px;
+    width: 100%;
     text-align: center;
 }
 
