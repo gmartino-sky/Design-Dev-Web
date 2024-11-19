@@ -208,6 +208,15 @@ p {
     border-radius: 8px;
 }
 
+/* Ajustes para las imágenes dentro del modal */
+.modal-content img {
+    max-width: 100%; /* La imagen no será más ancha que el contenedor */
+    height: auto; /* Mantiene las proporciones de la imagen */
+    display: block; /* Asegura que no genere espacio adicional */
+    margin: 0 auto; /* Centra la imagen dentro del modal */
+}
+
+
 .close-btn {
     color: #aaa;
     float: right;
@@ -223,6 +232,55 @@ p {
     cursor: pointer;
 }
 /* Fin de Modals */
+
+/* Estilos específicos para la página de suscripción */
+#planes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.plan {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plan h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.plan button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.plan button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Clase para desenfocar todo menos el modal */
+.blurred > :not(#noticias-modal) {
+    filter: blur(3px); /* Aplica el desenfoque */
+    pointer-events: none; /* Impide la interacción */
+    user-select: none; /* Evita que se seleccione el texto */
+    opacity: 0.8; /* Reduce ligeramente la opacidad */
+}
+
 
 /* Estilos del Footer*/
 

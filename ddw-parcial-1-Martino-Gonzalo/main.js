@@ -10,28 +10,23 @@ const modal = document.getElementById("noticias-modal");
 const modalBody = document.getElementById("modal-body");
 const closeBtn = document.querySelector(".close-btn");
 
-// Función para mostrar el modal
+// Función para mostrar el modal y aplicar el efecto borroso
 function showModal(content) {
-    modalBody.innerHTML = content;
-    modal.style.display = "block";
+    modalBody.innerHTML = content; // Carga el contenido dinámico en el modal
+    modal.style.display = "block"; // Muestra el modal
+    document.body.classList.add("blurred"); // Aplica el efecto borroso al resto de la página
 }
 
-// Función para cerrar el modal
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+// Función para cerrar el modal y quitar el efecto borroso
+function closeModal() {
+    modal.style.display = "none"; // Oculta el modal
+    document.body.classList.remove("blurred"); // Quita el efecto borroso
+}
 
-// Cerrar el modal al hacer clic fuera de él
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-// Detectar clic en una noticia
+// Detectar clic en las noticias principales y secundarias
 document.querySelectorAll(".noticias-principales article, .noticias-secundarias article").forEach((noticia) => {
     noticia.addEventListener("click", () => {
-        const articleId = noticia.querySelector("h2,h3").textContent.trim(); // Usa el título como identificador único
+        const articleId = noticia.querySelector("h2, h3").textContent.trim(); // Usa el título como identificador único
         let viewedArticles = JSON.parse(localStorage.getItem("viewedArticles")); // Recupera el historial como objeto
 
         if (!viewedArticles[articleId]) {
@@ -45,7 +40,7 @@ document.querySelectorAll(".noticias-principales article, .noticias-secundarias 
                 viewedArticles[articleId] = 1;
                 localStorage.setItem("viewedArticles", JSON.stringify(viewedArticles));
             } else {
-                // Mostrar mensaje de suscripción
+                // Límite de noticias gratuitas alcanzado
                 showModal(`
                     <h2>Suscripción Requerida</h2>
                     <p>Has alcanzado el límite de noticias gratuitas. Por favor, suscríbete para continuar leyendo.</p>
@@ -63,7 +58,7 @@ document.querySelectorAll(".noticias-principales article, .noticias-secundarias 
                 viewedArticles[articleId]++;
                 localStorage.setItem("viewedArticles", JSON.stringify(viewedArticles));
             } else {
-                // Mostrar mensaje que no puede verla más
+                // Límite de vistas por noticia alcanzado
                 showModal(`
                     <h2>Límite de vistas alcanzado</h2>
                     <p>Ya has visto esta noticia el máximo de ${maxViewsPerArticle} veces. Por favor, explora otras noticias o suscríbete para continuar.</p>
@@ -72,4 +67,14 @@ document.querySelectorAll(".noticias-principales article, .noticias-secundarias 
             }
         }
     });
+});
+
+// Evento para cerrar el modal al hacer clic en el botón de cerrar
+closeBtn.addEventListener("click", closeModal);
+
+// Evento para cerrar el modal al hacer clic fuera de él
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
 });
